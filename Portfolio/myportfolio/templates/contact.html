@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<section id="contact" class="py-5 bg-light">
+  <div class="container d-flex justify-content-center">
+    <div class="card shadow-lg border-0 p-4 rounded-4 animate__animated animate__fadeInUp" style="max-width: 600px; width: 100%;">
+      <div class="card-body text-center">
+        <h2 class="fw-bold mb-4">Find Me On</h2>
+
+        <div class="mb-3">
+          <i class="bi bi-envelope-fill text-primary fs-4 me-2"></i>
+          <a href="mailto:{{ contact.email }}" class="text-decoration-none fs-5">
+            {{ contact.email }}
+          </a>
+        </div>
+
+        <div class="mb-3">
+          <i class="bi bi-github fs-4 me-2"></i>
+          <a href="{{ contact.github }}" target="_blank" class="text-decoration-none fs-5">
+            {{ contact.github }}
+          </a>
+        </div>
+
+        <div class="mb-3">
+          <i class="bi bi-linkedin text-primary fs-4 me-2"></i>
+          <a href="{{ contact.linkedin }}" target="_blank" class="text-decoration-none fs-5">
+            {{ contact.linkedin }}
+          </a>
+        </div>
+
+        <div class="mt-4">
+          <a href="{{ contact.github }}" target="_blank" class="me-3">
+            <i class="bi bi-github fs-2 animate__animated animate__bounceIn" style="animation-delay: 0.3s;"></i>
+          </a>
+          <a href="{{ contact.linkedin }}" target="_blank" class="me-3">
+            <i class="bi bi-linkedin fs-2 animate__animated animate__bounceIn" style="animation-delay: 0.6s;"></i>
+          </a>
+          <a href="mailto:{{ contact.email }}">
+            <i class="bi bi-envelope-fill fs-2 animate__animated animate__bounceIn" style="animation-delay: 0.9s;"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+<style>
+  #contact a {
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  #contact a:hover {
+    color: #18ac51; /* Bootstrap primary */
+    transform: scale(1.1);
+  }
+</style>

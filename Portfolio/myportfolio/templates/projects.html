@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+<section id="projects" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-5">Projects</h2>
+    <div class="row justify-content-center">
+      {% for project in projects %}
+        {% cycle 'fade-up' 'fade-down' 'fade-left' 'fade-right' as animation silent %}
+        <div class="col-md-4 col-sm-6 mb-4"
+             data-aos="{{ animation }}"
+             data-aos-delay="{{ forloop.counter0|add:1 }}00">
+          <div class="card h-100 shadow project-card">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">{{ project.title }}</h5>
+              <p class="card-text">{{ project.description }}</p>
+              {% if project.link %}
+                <a href="{{ project.link }}" class="btn btn-primary" target="_blank">View</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-center">No projects added yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 900,  // animation speed
+    once: false      // repeats on every scroll
+  });
+</script>
+{% endblock %}
+
+<style>
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.15);
+}
+</style>

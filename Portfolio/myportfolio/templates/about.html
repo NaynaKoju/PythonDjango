@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+{% load markdown_deux_tags %}
+
+
+{% block content %}
+<div class="container py-5 animate-fade-in">
+  <div class="row align-items-center">
+
+    <!-- Profile Picture Column -->
+    <div class="col-md-4 text-center">
+      {% if bio and bio.profile_pic %}
+        <img src="{{ bio.profile_pic.url }}" 
+             alt="{{ bio.name }}" 
+             class="rounded-circle shadow-lg img-fluid"
+             style="max-width: 280px; height: 280px; object-fit: cover;">
+      {% else %}
+        <img src="https://via.placeholder.com/250" 
+             alt="Default Profile" 
+             class="rounded-circle shadow-lg img-fluid"
+             style="max-width: 220px; height: 220px; object-fit: cover;">
+      {% endif %}
+    </div>
+
+    <!-- About Text Column -->
+    <div class="col-md-8">
+      <h2 class="fw-bold mb-3">{{ about_text.name }}</h2>
+      <h5 class="text-muted mb-3">{{ about_text.title }}</h5>
+      <p class="lead">{{ about_text.content|markdown:"default"}}</p>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<main class="animate-fade-in">
+  {% if bio %}
+    <header id="hero" class="bg-primary text-white text-center animate-slide-up">
+      <div class="container">
+        <h1 class="display-4 fw-bold">Hi, I'm {{ bio.name }} 👋</h1>
+        <p class="lead">{{ bio.title }}</p>
+      </div>
+    </header>
+  {% endif %}
+
+  <section id="projects-overview" class="py-5">
+    <div class="container">
+      <h2 class="fw-bold mb-4">Projects Overview</h2>
+      <div class="row">
+        {% for project in projects %}
+          <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100 animate-slide-up">
+              <div class="card-body">
+                <h5>{{ project.title }}</h5>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="text-center mt-3">
+        <a href="{% url 'projects' %}" class="btn btn-primary">See All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills-overview" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="fw-bold mb-4">Skills Overview</h2>
+      <div class="row">
+        {% for skill in skills %}
+          <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card shadow-sm text-center p-3 animate-slide-up">
+              <h5>{{ skill.name }}</h5>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="text-center mt-3">
+        <a href="{% url 'skills' %}" class="btn btn-primary">See All Skills</a>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
